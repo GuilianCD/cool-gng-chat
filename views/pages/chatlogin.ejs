@@ -15,18 +15,20 @@
         <%- include('../partials/navbar'); %>
 
         <main id="chatlogin">
-            <h1>Login</h1>
+            <div>
+                <h1>Login</h1>
 
-            <form id="chatloginbox" action="/chat">
-                <input type="text" name="username" placeholder="Enter an username...">
-            </form>
-
-            <input type="button" value="Login" onclick="document.querySelector('#chatloginbox').submit();"
-
-            <div id="chatlogintip">
-                <h2>Need help ?</h2>
-
-                <p>The login form above will take you to the chat after you entered an username.</p>
+                <form id="chatloginbox" action="/chat">
+                    <input type="text" name="username" required placeholder="Enter an username...">
+    
+                    <button>Login</button>
+                </form>
+    
+                <div id="chatlogintip">
+                    <h2>Need help ?</h2>
+    
+                    <p>The login form above will take you to the chat after you entered an username.</p>
+                </div>
             </div>
         </main>
     </body>

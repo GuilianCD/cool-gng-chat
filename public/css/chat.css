@@ -1,4 +1,5 @@
 @import "common.css";
+@import "navbar.css";
 
 :root {
 
@@ -10,8 +11,12 @@
 main {
     height: 100vh;
 
-    background-color: #FCF6E9;
+    background-color: var(--light-color-light);
     color: var(--dark-color-median);
+}
+
+#chatlogin {
+    padding-left: 3rem;
 }
 
 #chatmain {
