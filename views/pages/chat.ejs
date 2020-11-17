@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Chatting</title>
+
+        <%- include('../partials/header'); %>
+        <%- include('../partials/common_header'); %>
+        
+        <link rel="stylesheet" type="text/css" href="static/css/chat.css">
+    </head>
+
+    <body>
+
+        <%- include('../partials/navbar'); %>
+
+        <main id="chatmain">
+            <div id="chatsidebar">
+
+            </div>
+
+            <div id="chatbox">
+                <div id="chatheader">
+                    <div>
+                        <p id="room-name">ROOM NAME</p>
+                    </div>
+                </div>
+
+                <div id="chat-container">
+                    <div id="chat">
+                    
+                    </div>
+                </div>
+                
+                
+                <div id="chatform-container">
+                    <form id="chatform">
+                        <input type="text" id="message" required autocomplete="off" placeholder="Enter message...">
+
+                        <button id="chatform-send">Send</button>
+                    </form>
+                </div>
+            </div>
+
+            
+
+        </main>
+    </body>
+
+    <%- include('../partials/footer'); %>
+
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.2/qs.min.js"
+      integrity="sha256-TDxXjkAUay70ae/QJBEpGKkpVslXaHHayklIVglFRT4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="static/js/chat.js"></script>
+</html>

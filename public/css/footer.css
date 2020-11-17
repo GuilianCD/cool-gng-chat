@@ -1,0 +1,64 @@
+@import "navbar.css";
+
+:root {
+    --footer-background: #363b4d;
+    --footer-color: #acacac;
+}
+
+body {
+    padding-bottom: 0;
+
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+footer {
+    width: 100vw;
+
+    z-index: 1;
+
+    background-color: var(--footer-background);
+    color: var(--footer-color);
+}
+
+#footerlist {
+    display: flex;
+    flex-direction: column;
+
+    list-style-type: none;
+
+    justify-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    margin-bottom: 0;
+    padding-bottom: 2rem;
+}
+
+#footerlist li {
+    background-color: blue;
+    width: min-content;
+}
+
+#footerlist a {
+    color: var(--footer-color);
+    text-decoration: none;
+
+    text-align: center;
+}
+
+#footerlist a:visited {
+    color: var(--footer-color);
+}
+
+#footerlist a:hover {
+    text-decoration: underline;
+}
+
+#footerlist_title {
+    font-size: 5em;
+}

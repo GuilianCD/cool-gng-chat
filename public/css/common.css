@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+:root{
+	font-size: 16px;
+	font-family: 'Roboto', "Open sans", sans-serif;
+
+
+	--dark-color-dark: #0e1425;
+	--dark-color-median: #222C44; 
+	--dark-color-light: #2a3c6f;
+	--dark-color-lighter: #3f5ba6;
+	--dark-color-lightest: #7e93ce;
+
+	--light-color-dark: #edc278;
+	--light-color-median: #f3d6a5;
+	--light-color-light: #fcf5e9;
+	--light-color-lightest: #ffffff;
+	
+
+	--icons-color: var(--light-color-light);
+	--default-color: var(--light-color-light);
+
+	--main-margin: 2.5rem;
+
+	background-color: var(--dark-color-median); 
+	color: var(--default-color); 
+}
+
+html {
+
+	height: 100%;
+}
+
+body {
+	background-color: var(--dark-color-median);
+	width: 100vw;
+	min-height: 100%;
+
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #6649b8;
+
+  border-radius: 25px;
+}
+
+
+
+
+#defaultmain > div {
+	grid-column: 2;
+
+	min-height: 200px;
+
+	background-color: #FFF;
+	color: var(--dark-color-median);
+
+	border-radius: 10px;
+}
+
+#defaultmain > div p {
+	text-align: justify;
+	text-justify: inter-word;
+}
+
+@media only screen and (min-width: 600px) {
+	body {
+		overflow-x: hidden;
+	}
+
+	#defaultmain {
+		display: grid;
+	
+		grid-template-columns: var(--main-margin) 1fr var(--main-margin);
+	}
+
+	#defaultmain > div div p {
+		margin-left: 0.75rem;
+	}
+
+	#defaultmain > div {
+		grid-column: 2;
+
+		padding: 1.5rem;
+		padding-top: 0;
+	}
+}
+
+/*Small screens */
+@media only screen and (max-width: 600px) {
+	#defaultmain {
+		display: grid;
+	
+		grid-template-columns: 1fr;
+
+		padding: var(--main-top-padding) 0.5rem 0;
+	}
+
+	#defaultmain > div {
+		grid-column: 1;
+
+		padding: 0rem;
+		padding-top: 0;
+	}
+
+	#defaultmain > div div {
+		padding: 1rem;
+		padding-top: 0;
+	}
+}
+
+
