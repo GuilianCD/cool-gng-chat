@@ -8,7 +8,7 @@ const {
     userJoin, 
     userLeave, 
     getCurrentUser, 
-    getRoomUsers 
+    getNumberInRoom
 } = require("./utils/users");
 
 
@@ -34,6 +34,7 @@ io.on("connection", socket => {
         //On join
         //Send a welcome message to the newly connected
         socket.emit("message", formatMessage(botname, "Welcome to the chat ! (Yes I am the real Jeff Bezos, stop asking)"));
+        io.to(user.room).emit("infomessage", getNumberInRoom(user.room));
 
         socket.broadcast.to(user.room).emit("message", formatMessage(botname, `${user.username} has joined the room.`));
     });
@@ -44,7 +45,7 @@ io.on("connection", socket => {
         io.to(user.room).emit("message", formatMessage(user.username, message));
 
 
-
+        //Funny bit
         if(message.toLowerCase().includes("is that jeff bezos ?")){
             io.to(user.room).emit("message", formatMessage(botname, `Yes, it is me, definitely not a robot, please stop asking.`));
         }
@@ -55,6 +56,7 @@ io.on("connection", socket => {
         const user = userLeave(socket.id);
 
         if(user) {
+            io.to(user.room).emit("infomessage", getNumberInRoom(user.room));
             io.to(user.room).emit("message", formatMessage(botname, `${user.username} has disconnected from the room.`));
         }
     });

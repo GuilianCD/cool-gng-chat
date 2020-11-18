@@ -11,6 +11,8 @@ socket.emit('joinRoom', { username, room });
 
 const chatForm = document.getElementById("chatform");
 const chat = document.getElementById("chat");
+const numOfPeople = document.getElementById("numPeopleInRoom");
+
 
 document.getElementById("room-name").innerHTML = room;
 
@@ -19,6 +21,10 @@ socket.on("message", message => {
     addMessage(message);
 
     chat.scrollTop = chat.scrollHeight;
+});
+
+socket.on("infomessage", numPeople => {
+    numOfPeople.innerHTML = numPeople;
 });
 
 chatForm.addEventListener("submit", e => {
