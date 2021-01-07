@@ -4,8 +4,8 @@
   "description": "A really bad attempt at learning and understanding nodejs using a webserver and other stuff",
   "main": "server.js",
   "scripts": {
-    "start": "node server",
-    "dev": "nodemon server"
+    "start": "node .",
+    "dev": "nodemon ."
   },
   "author": "Guilian Celin-Davanture",
   "license": "MIT",
@@ -13,7 +13,9 @@
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "moment": "^2.29.1",
-    "socket.io": "^3.0.1"
+    "node-cleanup": "^2.1.2",
+    "socket.io": "^3.0.1",
+    "sqlite3": "^5.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
