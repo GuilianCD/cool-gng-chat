@@ -10,7 +10,8 @@ function openDB(){
 
             db.run('CREATE TABLE IF NOT EXISTS users ('
                 + 'id INTEGER PRIMARY KEY AUTOINCREMENT,'
-                + 'username TEXT UNIQUE NOT NULL,'
+                + 'email TEXT UNIQUE NOT NULL'
+                + 'username TEXT NOT NULL,'
                 + 'password TEXT NOT NULL'
                 + ');'
                 );
@@ -22,7 +23,6 @@ function openDB(){
         }
     });
 }
-openDB();
 
 
 
@@ -38,12 +38,12 @@ function hashString(str) {
     return hash;
 }
 
-function verifyPassword(username, rawPassword) {
+function verifyPassword(email, rawPassword) {
     return new Promise((resolve, reject) => {
         db.get(`SELECT
             password as password
-            FROM users WHERE username=?;`, 
-            [username],
+            FROM users WHERE email=?;`, 
+            [email],
             (err, row) => {
                 if (err) {
                     console.error(err.message);
@@ -59,7 +59,7 @@ function verifyPassword(username, rawPassword) {
                 }else{
                     result.success = false;
                     if(! row){
-                        result.usernameNotExists = true;
+                        result.emailNotExists = true;
                     }
                 }
                 resolve(result);
@@ -69,9 +69,9 @@ function verifyPassword(username, rawPassword) {
 }
 
 
-function registerUser(username, rawPassword){
+function registerUser(email, username, rawPassword){
     return new Promise((resolve, reject) => {
-        db.run(`INSERT INTO users(username, password) VALUES(?, ?)`, [username, hashString(rawPassword)], function(err) {
+        db.run(`INSERT INTO users(email, username, password) VALUES(?, ?, ?)`, [email, username, hashString(rawPassword)], function(err) {
             if (err) {
                 console.error(err.message);
                 reject(err);
@@ -93,6 +93,7 @@ function closeDB() {
 }
 
 module.exports = {
+    openDB,
     verifyPassword,
     registerUser,
     closeDB

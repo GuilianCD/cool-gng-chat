@@ -2,6 +2,7 @@ const path = require("path");
 const express = require("express");
 const http = require("http");
 const socketio = require("socket.io");
+const cookieParser = require('cookie-parser');
 
 const formatMessage = require("./utils/messages");
 const { 
@@ -10,6 +11,12 @@ const {
     getCurrentUser, 
     getNumberInRoom
 } = require("./utils/users");
+const {
+    openDB,
+    verifyPassword,
+    registerUser,
+    closeDB
+} = require("./utils/database");
 
 
 const PORT = process.env.PORT || 8080;
@@ -22,6 +29,14 @@ const io = socketio(server);
 //Sets the static folder to the "public" folder
 app.use('/static', express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
+// Parse URL-encoded bodies (as sent by HTML forms)
+app.use(express.urlencoded());
+// Parse JSON bodies (as sent by API clients)
+app.use(express.json());
+
+
+//Database open
+openDB();
 
 
 //Run when a client connects
@@ -66,10 +81,15 @@ io.on("connection", socket => {
 
 
 
+
+
+
 app.get('/', (request, response) => {
     response.render('pages/home');
 });
 
+
+/*
 app.get('/chat', (request, response) => {
     if(request.query.username === undefined){
         response.render('pages/chatlogin');
@@ -77,6 +97,12 @@ app.get('/chat', (request, response) => {
         //Client is logged
         response.render('pages/chat');
     }
+});
+*/
+
+app.post('/login', function(request, response){
+    console.log(request.body.user.name);
+    console.log(request.body.user.password);
 });
 
 app.use((request, response) => {

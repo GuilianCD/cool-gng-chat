@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <%- include('../partials/header'); %>
+	    <%- include('../partials/common_header'); %>
+    </head>
+
+    <body>
+
+        <%- include('../partials/navbar'); %>
+
+        <main id="defaultmain">
+            <div>
+                <form id="loginbox" method="post" action="/chat">
+                    <label for="user[tag]">Unique identifier (cannot be changed):</label>
+                    <input type="text" name="user[tag]" required placeholder="Enter your e-mail...">
+                    <label for="user[name]">Username :</label>
+                    <input type="text" name="user[name]" required placeholder="Enter an username...">
+                    <label for="user[password]"> password:</label>
+                    <input type="password" name="user[password]" value="cheesyhamburger" required>
+                    
+                    <button>Login</button>
+                    
+                </form>
+            </div>
+        </main>
+
+    </body>
+
+    <%- include('../partials/footer'); %>
+
+</html>
