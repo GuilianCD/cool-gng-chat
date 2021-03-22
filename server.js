@@ -89,7 +89,7 @@ app.get('/', (request, response) => {
 });
 
 
-/*
+
 app.get('/chat', (request, response) => {
     if(request.query.username === undefined){
         response.render('pages/chatlogin');
@@ -98,7 +98,7 @@ app.get('/chat', (request, response) => {
         response.render('pages/chat');
     }
 });
-*/
+
 
 app.post('/login', function(request, response){
     console.log(request.body.user.name);
